@@ -1,21 +1,13 @@
 function go(page) {
-  document.body.classList.add("fade");
-  setTimeout(() => {
-    window.location.href = page;
-  }, 200);
+  window.location.href = page;
 }
 
-// floating dots
-for (let i = 0; i < 40; i++) {
-  let dot = document.createElement("div");
-  dot.className = "dot";
-  dot.style.left = Math.random() * 100 + "vw";
-  dot.style.animationDuration = (10 + Math.random() * 20) + "s";
-  document.body.appendChild(dot);
-}
-
-// 🎵 music shuffle
-const songs = ["song1.mp3", "song2.mp3", "song3.mp3"];
+// 🎵 music system
+const songs = [
+  "music/song1.mp3",
+  "music/song2.mp3",
+  "music/song3.mp3"
+];
 
 function shuffle() {
   const player = document.getElementById("player");
@@ -25,17 +17,40 @@ function shuffle() {
   player.play();
 }
 
+// 🎧 ambient music
+let bgMusic = new Audio("music/ambient.mp3");
+bgMusic.loop = true;
+bgMusic.volume = 0.2;
+
+function toggleMusic() {
+  if (bgMusic.paused) {
+    bgMusic.play();
+  } else {
+    bgMusic.pause();
+  }
+}
+
+// 🌠 particles
+function createParticles() {
+  for (let i = 0; i < 40; i++) {
+    let p = document.createElement("div");
+    p.className = "particle";
+    p.style.left = Math.random() * 100 + "vw";
+    p.style.animationDuration = (5 + Math.random() * 10) + "s";
+    document.body.appendChild(p);
+  }
+}
+createParticles();
+
 // 💬 support system
 function openSupport() {
   const box = document.getElementById("supportBox");
 
   box.innerHTML = `
-    <div class="card fade">
-      <p>how are you feeling?</p>
-      <button onclick="stressed()">stressed</button>
-      <button onclick="sad()">sad</button>
-      <button onclick="empty()">empty</button>
-    </div>
+    <p>how are you feeling?</p>
+    <button onclick="stressed()">stressed</button>
+    <button onclick="sad()">sad</button>
+    <button onclick="empty()">empty</button>
   `;
 }
 
@@ -43,11 +58,9 @@ function stressed() {
   const box = document.getElementById("supportBox");
 
   box.innerHTML = `
-    <div class="card fade">
-      <p>you can let it out here.</p>
-      <textarea rows="5" placeholder="type anything..."></textarea>
-      <p>it’s okay. you’re allowed to feel this.</p>
-    </div>
+    <p>you can let it out here.</p>
+    <textarea rows="5" cols="30" placeholder="type anything..."></textarea>
+    <p>this space is just for you.</p>
   `;
 }
 
@@ -55,16 +68,14 @@ function sad() {
   const box = document.getElementById("supportBox");
 
   box.innerHTML = `
-    <div class="card fade">
-      <p>take your time. maybe this helps.</p>
-      <button onclick="shuffle()">play something soft</button>
-      <p id="afterMsg"></p>
-    </div>
+    <p>play something soft.</p>
+    <button onclick="shuffle()">play music</button>
+    <p id="afterMsg"></p>
   `;
 
   setTimeout(() => {
     document.getElementById("afterMsg").innerText =
-      "you made it through every hard day so far. that means something.";
+      "this feeling won't last forever. you're stronger than you think.";
   }, 5000);
 }
 
@@ -72,10 +83,8 @@ function empty() {
   const box = document.getElementById("supportBox");
 
   box.innerHTML = `
-    <div class="card fade">
-      <p>empty doesn’t mean nothing.</p>
-      <p>it means there’s space.</p>
-      <p>and space can be filled with something good.</p>
-    </div>
+    <p>empty doesn't mean nothing.</p>
+    <p>it means there's room for something new.</p>
+    <p>stay a little longer.</p>
   `;
 }
