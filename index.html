@@ -1,26 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>somewhere quiet</title>
+  <title>home</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <div class="container">
-  <h1>hey.</h1>
-  <p>you can stay here for a bit</p>
 
-  <button onclick="go('animations.html')">animations</button>
-  <button onclick="go('music.html')">music</button>
-  <button onclick="go('extras.html')">more</button>
+  <h1>your space</h1>
+  <p>a quiet place to exist</p>
 
-  <br>
+  <button onclick="go('quote.html')">quote</button>
+  <button onclick="go('game.html')">space</button>
+  <button onclick="go('journal.html')">journal</button>
 
-  <button onclick="openSupport()">how are you feeling?</button>
-  <button onclick="toggleMusic()">music on/off</button>
+  <button onclick="openMood()">how are you?</button>
 
-  <div id="supportBox"></div>
+</div>
+
+<!-- mood popup -->
+<div id="moodBox" class="hidden">
+  <p>how do you feel?</p>
+
+  <button onclick="handleMood('stressed')">stressed</button>
+  <button onclick="handleMood('sad')">sad</button>
+  <button onclick="handleMood('empty')">empty</button>
+
+  <div id="moodResponse"></div>
 </div>
 
 <script src="script.js"></script>
