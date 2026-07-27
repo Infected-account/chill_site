@@ -2,39 +2,56 @@ function go(page) {
   window.location.href = page;
 }
 
-/* MOOD SYSTEM */
-
 function openMood() {
-  document.getElementById("moodBox").classList.toggle("hidden");
+  const box = document.getElementById("moodBox");
+  box.classList.toggle("hidden");
 }
 
 function handleMood(mood) {
-  const box = document.getElementById("moodResponse");
+  const response = document.getElementById("moodResponse");
 
-  if (mood === "stressed") {
-    box.innerHTML = `
-      <p>let it out.</p>
-      <textarea id="vent"></textarea>
-      <br>
-      <button onclick="saveVent()">save</button>
-    `;
-  }
+  const messages = {
+    stressed: [
+      "take a breath. nothing needs to be solved right now.",
+      "you don’t have to carry everything at once.",
+      "pause. unclench your shoulders for a second."
+    ],
 
-  if (mood === "sad") {
-    box.innerHTML = `
-      <p>it's okay to feel this way.</p>
-      <p>stay for a moment.</p>
-      <p>you've made it through hard days before.</p>
-    `;
-  }
+    sad: [
+      "it’s okay to feel this way.",
+      "you’re allowed to take your time healing.",
+      "this feeling won’t last forever, even if it feels like it will."
+    ],
 
-  if (mood === "empty") {
-    box.innerHTML = `
-      <p>you may feel empty right now.</p>
-      <p>but that doesn't mean there's nothing inside you.</p>
-      <p>small things will fill that space again.</p>
-    `;
-  }
+    empty: [
+      "even feeling nothing is still something.",
+      "you’re still here. that matters.",
+      "you don’t need to force yourself to feel anything right now."
+    ],
+
+    tired: [
+      "rest isn’t wasted time.",
+      "you don’t have to push right now.",
+      "your body is asking for a break, and that’s okay."
+    ],
+
+    lonely: [
+      "you’re not as alone as it feels right now.",
+      "someone, somewhere, would be glad you exist.",
+      "connection takes time, and you’re still worthy of it."
+    ],
+
+    overwhelmed: [
+      "focus on just one small thing.",
+      "you don’t have to solve everything today.",
+      "slow it down. one step is enough."
+    ]
+  };
+
+  const pool = messages[mood];
+  const random = pool[Math.floor(Math.random() * pool.length)];
+
+  response.innerText = random;
 }
 
 /* JOURNAL */
