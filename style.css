@@ -1,13 +1,11 @@
-
-
 body {
     margin: 0;
     padding: 0;
     height: 100vh;
     overflow-x: hidden;
 
-    /* soft deep space gradient */
-    background: radial-gradient(circle at top, #1a1f4c, #000000 70%);
+    /* layered purple gradient */
+    background: radial-gradient(circle at top, #2b0a3d, #120018 60%, #000000 100%);
     
     color: white;
     font-family: Arial, sans-serif;
