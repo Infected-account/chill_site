@@ -71,3 +71,19 @@ textarea {
   from { transform: translateY(0); }
   to { transform: translateY(-500px); }
 }
+
+.quotePopup {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background: rgba(255,255,255,0.1);
+  padding: 15px 25px;
+  border-radius: 10px;
+
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.5s ease;
+
+  font-size: 16px;
+}
