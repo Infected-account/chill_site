@@ -1,7 +1,30 @@
 let score = 0;
 
+const quotes = [
+  "you’re still going, and that’s enough.",
+  "small steps still move you forward.",
+  "you don’t have to rush healing.",
+  "even now, you’re doing better than you think.",
+  "you’re allowed to take up space.",
+  "you made it through another moment."
+];
+
 function updateScore() {
   document.getElementById("score").innerText = score + " stars";
+}
+
+function showQuote() {
+  const q = quotes[Math.floor(Math.random() * quotes.length)];
+
+  const popup = document.createElement("div");
+  popup.className = "quotePopup";
+  popup.innerText = q;
+
+  document.body.appendChild(popup);
+
+  setTimeout(() => {
+    popup.remove();
+  }, 3000);
 }
 
 function createStar() {
@@ -17,6 +40,11 @@ function createStar() {
   star.onclick = () => {
     score++;
     updateScore();
+
+    if (score % 10 === 0) {
+      showQuote();
+    }
+
     star.remove();
   };
 
