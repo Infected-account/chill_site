@@ -7,18 +7,22 @@
 
 <body>
 
+<div class="container">
   <h1>hey.</h1>
-  <p>stay a while</p>
+  <p>you can stay here for a bit</p>
 
-  <div class="card">
-    <button onclick="go('animations.html')">animations</button>
-    <button onclick="go('music.html')">music</button>
-    <button onclick="go('extras.html')">more</button>
-    <button onclick="openSupport()">how are you feeling?</button>
-  </div>
+  <button onclick="go('animations.html')">animations</button>
+  <button onclick="go('music.html')">music</button>
+  <button onclick="go('extras.html')">more</button>
+
+  <br>
+
+  <button onclick="openSupport()">how are you feeling?</button>
+  <button onclick="toggleMusic()">music on/off</button>
 
   <div id="supportBox"></div>
+</div>
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
