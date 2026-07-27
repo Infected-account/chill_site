@@ -7,18 +7,20 @@
 
 <body>
 
+<div class="container">
   <h1>music</h1>
 
-  <div class="card">
-    <button onclick="shuffle()">shuffle</button>
-    <br><br>
-    <audio id="player" controls></audio>
-  </div>
+  <button onclick="shuffle()">shuffle</button>
 
-  <div class="card">
-    <button onclick="go('index.html')">back</button>
-  </div>
+  <audio id="player" controls></audio>
 
-  <script src="script.js"></script>
+  <br>
+  <button onclick="toggleMusic()">ambient on/off</button>
+
+  <br>
+  <button onclick="go('index.html')">back</button>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
