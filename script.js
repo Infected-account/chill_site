@@ -18,7 +18,7 @@ function shuffle() {
 }
 
 // 🎧 ambient music
-let bgMusic = new Audio("music/ambient.mp3");
+let bgMusic = new Audio("ambient.mp3");
 bgMusic.loop = true;
 bgMusic.volume = 0.2;
 
