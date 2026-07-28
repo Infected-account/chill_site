@@ -79,3 +79,9 @@ function saveVent() {
   const text = document.getElementById("vent").value;
   localStorage.setItem("vent", text);
 }
+
+<audio id="bgMusic" loop>
+    <source src="audio/ambient.mp3" type="audio/mpeg">
+</audio>
+
+<button onclick="toggleMusic()" id="musicBtn"> Music</button>
