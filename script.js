@@ -2,11 +2,13 @@ function go(page) {
   window.location.href = page;
 }
 
+// 🌙 mood toggle
 function openMood() {
   const box = document.getElementById("moodBox");
   box.classList.toggle("hidden");
 }
 
+// 💭 mood responses
 function handleMood(mood) {
   const response = document.getElementById("moodResponse");
 
@@ -51,10 +53,20 @@ function handleMood(mood) {
   const pool = messages[mood];
   const random = pool[Math.floor(Math.random() * pool.length)];
 
-  response.innerText = random;
+  // ✨ SPECIAL: vent box for stressed
+  if (mood === "stressed") {
+    response.innerHTML = `
+      <p>${random}</p>
+      <textarea id="vent" placeholder="let it out..." rows="4"></textarea>
+      <br>
+      <button onclick="saveVent()">save</button>
+    `;
+  } else {
+    response.innerText = random;
+  }
 }
 
-/* JOURNAL */
+/* 📓 JOURNAL */
 
 function saveJournal() {
   const text = document.getElementById("journalInput").value;
@@ -71,17 +83,38 @@ window.onload = () => {
   if (saved) {
     document.getElementById("journalInput").value = saved;
   }
+
+  // 🎧 restore music state
+  const music = document.getElementById("bgMusic");
+  const isPlaying = localStorage.getItem("musicPlaying");
+
+  if (music && isPlaying === "true") {
+    music.volume = 0.4;
+    music.play().catch(() => {});
+  }
 };
 
-/* VENT SAVE */
+/* 💾 VENT SAVE */
 
 function saveVent() {
   const text = document.getElementById("vent").value;
   localStorage.setItem("vent", text);
 }
 
-<audio id="bgMusic" loop>
-    <source src="audio/ambient.mp3" type="audio/mpeg">
-</audio>
+/* 🎧 MUSIC */
 
-<button onclick="toggleMusic()" id="musicBtn"> Music</button>
+function toggleMusic() {
+  const music = document.getElementById("bgMusic");
+  const btn = document.getElementById("musicBtn");
+
+  if (music.paused) {
+    music.volume = 0.4;
+    music.play();
+    localStorage.setItem("musicPlaying", "true");
+    btn.textContent = "🔊 Music On";
+  } else {
+    music.pause();
+    localStorage.setItem("musicPlaying", "false");
+    btn.textContent = "🔇 Music Off";
+  }
+}
