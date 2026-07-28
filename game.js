@@ -57,3 +57,9 @@ function createStar() {
 
 setInterval(createStar, 800);
 updateScore();
+
+<audio id="bgMusic" loop>
+    <source src="audio/ambient.mp3" type="audio/mpeg">
+</audio>
+
+<button onclick="toggleMusic()" id="musicBtn"> Music</button>
